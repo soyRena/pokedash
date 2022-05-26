@@ -1,7 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { POKEDEX_PATH } from '../constants'
 
 const Home: React.FC = () => {
+   const { push } = useRouter()
+
+   const goToPokedex = () => {
+      push(POKEDEX_PATH)
+   }
+
    return (
       <div>
          <Head>
@@ -12,6 +20,8 @@ const Home: React.FC = () => {
 
          <main>
             <h1>Welcome to Pokedash!</h1>
+            <h2>Go to Pokedex!</h2>
+            <button onClick={goToPokedex}>Pokedex</button>
          </main>
       </div>
    )
