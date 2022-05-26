@@ -1,0 +1,1 @@
+export { getPokemonList } from './get-pokemon-list'
