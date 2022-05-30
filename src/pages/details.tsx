@@ -10,12 +10,10 @@ const Pokedex: React.FC = () => {
    const [selectedPokemonDetails, setSelectedPokemonDetails] = useState<PokemonDetails | undefined>(undefined)
 
    useEffect(() => {
-    getPokemonList().then((response) => setPokemons(response.results))
-   }, [])
+      if (!selectedPokemon) return;
 
-   useEffect(() => {
       getPokemonDetails(selectedPokemon?.name).then((response) => setSelectedPokemonDetails(response))
-   })
+   }, [selectedPokemon])
 
    return (
       <div>
