@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { PokedexLoadingScreen } from '../components'
 import { POKEMON_PATH } from '../constants'
 import { usePokemonList } from '../hooks'
 import { getPokemonList } from '../services'
@@ -16,7 +17,7 @@ const Pokedex: React.FC = () => {
       getPokemonList().then((response) => setPokemons(response.results))
    }, [])
 
-   const { data } = usePokemonList()
+   const { data, isLoading } = usePokemonList()
 
    const handleClick = (pokemon: Pokemon) => {
       push(
@@ -25,10 +26,14 @@ const Pokedex: React.FC = () => {
    }
 
    return (
-      <div>
-         Pokemons:
-         {pokemons.map((pokemon) => <button onClick={() => handleClick(pokemon)}>{pokemon.name}</button>)}
-      </div>
+      <>
+         {isLoading ? (<PokedexLoadingScreen />) : (
+            <div>
+               Pokemons:
+               {pokemons.map((pokemon) => <button onClick={() => handleClick(pokemon)}>{pokemon.name}</button>)}
+            </div>
+         )}
+      </>
    )
 }
 
