@@ -2,10 +2,10 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { POKEMON_PATH } from '../constants'
+import { usePokemonList } from '../hooks'
 import { getPokemonList } from '../services'
 import { Pokemon } from '../types'
 import { urlTemplate } from '../utils'
-
 
 const Pokedex: React.FC = () => {
    const [pokemons, setPokemons] = useState<Pokemon[]>([])
@@ -15,6 +15,8 @@ const Pokedex: React.FC = () => {
    useEffect(() => {
       getPokemonList().then((response) => setPokemons(response.results))
    }, [])
+
+   const { data } = usePokemonList()
 
    const handleClick = (pokemon: Pokemon) => {
       push(

@@ -1,0 +1,1 @@
+export { usePokemonList } from './use-pokemon-list'
