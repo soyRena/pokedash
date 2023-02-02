@@ -8,6 +8,10 @@ const theme = {
       secondary: '#F28F16',
       third: '#F5DB13',
       danger: '#D93E30'
+   },
+   typeColors: {
+      firePrimary: '#D93E30',
+      fireSecondary: '#B23327'
    }
 }
 
