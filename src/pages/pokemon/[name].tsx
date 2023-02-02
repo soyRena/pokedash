@@ -1,6 +1,5 @@
 import React from 'react'
 import { getPokemonDetails, getPokemonList } from '../../services'
-import { PokemonList } from '../../types'
 
 export default function Pokemon({pokemon}) {
    return (
@@ -18,7 +17,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
    const pokemons = await getPokemonList()
    return {
-      paths: pokemons.results.map((pokemon) => ({ 
+      paths: pokemons.results.map((pokemon) => ({
         params: {
          name: pokemon.name,
         },
