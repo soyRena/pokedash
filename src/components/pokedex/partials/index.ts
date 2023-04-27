@@ -1,1 +1,0 @@
-export { PokedexLoadingScreen } from './loading-screen'
