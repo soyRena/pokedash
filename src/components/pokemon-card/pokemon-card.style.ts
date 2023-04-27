@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import theme from "../../config/theme"
+import theme from "../../ui/theme"
 
 export const PokemonCardContainer = styled.div`
    width: 350px;
