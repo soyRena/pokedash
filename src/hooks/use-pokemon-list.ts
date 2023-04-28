@@ -10,6 +10,6 @@ export const usePokemonList = () => {
 
   return {
      ...restQuery,
-     data: response
+     data: response?.results
   }
 }

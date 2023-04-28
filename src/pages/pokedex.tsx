@@ -1,21 +1,11 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
 import { PokemonCard } from '../components'
 import { usePokemonList } from '../hooks'
-import { getPokemonList } from '../services'
 import { Pokemon } from '../types'
 import { Grid, Skeleton } from '@mui/material'
 
-const Pokedex: React.FC = () => {
-   const [pokemons, setPokemons] = useState<Pokemon[]>([])
-   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | undefined>(
-      undefined
-   )
+function Pokedex() {
    const { push } = useRouter()
-
-   useEffect(() => {
-      getPokemonList().then((response) => setPokemons(response.results))
-   }, [])
 
    const { data, isLoading } = usePokemonList()
 
@@ -51,7 +41,7 @@ const Pokedex: React.FC = () => {
                rowSpacing={1}
                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
-               {pokemons.map((pokemon, index) => (
+               {data.map((pokemon, index) => (
                   <Grid item xs={2} sm={2} md={2} mt={2} key={index}>
                      <PokemonCard
                         key={pokemon.name}
