@@ -4,7 +4,6 @@ import {
    Card,
    CardActionArea,
    CardContent,
-   CardMedia,
    Chip,
    IconButton,
    Stack,
@@ -27,19 +26,34 @@ export function PokemonCard(props: PokemonCardProps) {
    return (
       <Card sx={{ maxWidth: 345 }}>
          <CardActionArea onClick={onClick}>
-            <CardMedia
-               component="img"
-               image={
-                  pokemonDetails?.sprites.other['official-artwork']
-                     .front_default
-               }
-            />
+            <Box
+               display="flex"
+               justifyContent="center"
+               flexDirection="column"
+               alignItems="center"
+               p={2}
+            >
+               <Typography gutterBottom variant="h6" component="div" mb={2}>
+                  {pokemonName.toUpperCase()}
+               </Typography>
+               <Avatar
+                  alt={pokemonName}
+                  src={
+                     pokemonDetails?.sprites.other['official-artwork']
+                        .front_default
+                  }
+                  sx={{
+                     width: 150,
+                     height: 150,
+                     backgroundColor: typeColors(
+                        pokemonDetails.types[0].type.name
+                     )
+                  }}
+               />
+            </Box>
             <CardContent>
                <Stack justifyContent="space-between" spacing={2}>
                   <Stack justifyContent="center" alignItems="center">
-                     <Typography gutterBottom variant="h5" component="div">
-                        {pokemonName.toUpperCase()}
-                     </Typography>
                      <Typography variant="caption" color="text.secondary">
                         &#35;{pokemonDetails?.id}
                      </Typography>
