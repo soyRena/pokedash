@@ -1,6 +1,6 @@
-import { useQuery } from "react-query"
-import { getPokemonDetails } from "../services"
-import { PokemonDetails } from "../types/pokemon-details"
+import { useQuery } from 'react-query'
+import { getPokemonDetails } from '../services'
+import { PokemonDetails } from '../types/pokemon-details'
 
 export function usePokemonDetails(pokemonName: string) {
    const { data: response, ...restQuery } = useQuery<PokemonDetails>(
@@ -8,5 +8,5 @@ export function usePokemonDetails(pokemonName: string) {
       () => getPokemonDetails(pokemonName)
    )
 
-   return { data: response }
+   return { data: response, ...restQuery }
 }

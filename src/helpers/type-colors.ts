@@ -17,7 +17,7 @@ export function typeColors(type: string) {
       dragon: '#6F35FC',
       dark: '#705746',
       steel: '#B7B7CE',
-      fairy: '#D685AD',
+      fairy: '#D685AD'
    }
 
    return colorsMap[type as keyof typeof colorsMap]
